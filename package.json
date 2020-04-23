@@ -1,24 +1,30 @@
 {
-	"name": "homebridge-raritan-pdu",
-	"version": "0.1.0",
-	"description": "HomeBridge plugin for Raritan PDUs",
-	"license": "AGPL-3.0",
-	"keywords": [
-		"homebridge-plugin"
-	],
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/ecoen/homebridge-raritan-pdu.git"
-	},
-	"bugs": {
-		"url": "http://github.com/ecoen/homebridge-raritan-pdu/issues"
-	},
-	"engines": {
-		"node": ">=0.12.0",
-		"homebridge": ">=0.2.0"
-	},
-	"dependencies": {
-		"net-snmp": "^1.1.18",
-		"es6-promisify": ">=4.0"
-	}
+  "name": "homebridge-raritan-pdu",
+  "version": "1.0.0",
+  "description": "HomeBridge plugin for Raritan PDUs",
+  "license": "MIT",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ecoen66/homebridge-raritan-pdu.git"
+  },
+  "bugs": {
+    "url": "http://github.com/ecoen66/homebridge-raritan-pdu/issues"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  },
+  "dependencies": {
+    "net-snmp": "^1.1.18",
+    "es6-promisify": ">=4.0"
+  },
+  "homepage": "https://github.com/ecoen66/homebridge-raritan-pdu#readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ecoen66"
 }
