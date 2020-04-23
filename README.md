@@ -1,8 +1,8 @@
 # homebridge-raritan-pdu
-An [Raritan](https://www.raritan.com) PX-5475 PDU plugin for
+A [Raritan](https://www.raritan.com) PX-5475 PDU plugin for
 [Homebridge](https://github.com/nfarina/homebridge).
 
-This code is heavily based on the work of invliD, on his/her [homebridge-digipower-pdu](https://github.com/invliD/homebridge-digipower-pdu) accessory.
+This code is heavily based on the work of invliD's [homebridge-digipower-pdu](https://github.com/invliD/homebridge-digipower-pdu) accessory.
 
 # Installation
 Run these commands:
