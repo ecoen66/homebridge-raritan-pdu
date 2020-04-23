@@ -1,6 +1,6 @@
 {
   "name": "homebridge-raritan-pdu",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "HomeBridge plugin for Raritan PDUs",
   "license": "MIT",
   "keywords": [
