@@ -9,7 +9,7 @@
 			"default": "PDU"
 		},
 		"ip": {
-			"title": "IP-Address or hostname",
+			"title": "IP-Address or Hostname",
 			"type": "string",
 			"required": true,
 			"default": "192.168.1.70"
@@ -19,6 +19,36 @@
 			"type": "string",
 			"required": true,
 			"default": "RW"
+		},
+		"outlet_count": {
+			"title": "Number of Outlets",
+			"type": "integer",
+			"required": true,
+			"default": 24
+		},
+		"manufacturer": {
+			"title": "PDU Manufacturer",
+			"type": "string",
+			"required": false,
+			"default": "Raritan-PDU"
+		},
+		"model": {
+			"title": "PDU Model",
+			"type": "string",
+			"required": false,
+			"default": "PX-5475"
+		},
+		"serial": {
+			"title": "Serial Number",
+			"type": "string",
+			"required": false,
+			"default": ""
+		},
+		"firmware": {
+			"title": "Firmware Version",
+			"type": "string",
+			"required": false,
+			"default": ""
 		}
 	}
 }

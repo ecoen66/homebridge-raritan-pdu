@@ -18,7 +18,12 @@ class PDUAccessory {
 	constructor(log, config) {
 		this.log = log;
 		this.services = [];
-		for (var i = 0; i < 24; i++) {
+		this.manufacturer = config.manufacturer;
+ 		this.model = config.model;
+ 		this.serial = config.serial;
+ 		this.firmware = config.firmware;
+ 		this.count = config.count;
+		for (var i = 0; i < this.count; i++) {
 			var service = new Service.Outlet(`Outlet ${i}`, i);
 			this.services.push(service);
 
@@ -32,7 +37,7 @@ class PDUAccessory {
 		this.snmp_set = promisify(this.snmp.set.bind(this.snmp));
 
 		var outlet_oids = [];
-		for (var i = 0; i < 24; i++) {
+		for (var i = 0; i < this.count; i++) {
 			outlet_oids.push(`1.3.6.1.4.1.13742.4.1.2.2.1.2.${i + 1}`);
 		}
 		var promises = [];
@@ -63,6 +68,16 @@ class PDUAccessory {
 	}
 
 	getServices() {
+	
+		// Create Accessory Informaton Service
+		var informationService = new Service.AccessoryInformation();
+		if (this.manufacturer) informationService.setCharacteristic(Characteristic.Manufacturer, this.manufacturer);
+		if (this.model) informationService.setCharacteristic(Characteristic.Model, this.model);
+		if (this.serial) informationService.setCharacteristic(Characteristic.SerialNumber, this.serial);
+		if (this.firmware) informationService.setCharacteristic(Characteristic.FirmwareRevision, this.firmware);
+
+		this.services.push(informationService);
+		
 		return this.services;
 	}
 
