@@ -22,7 +22,7 @@ class PDUAccessory {
  		this.model = config.model;
  		this.serial = config.serial;
  		this.firmware = config.firmware;
- 		this.count = config.count;
+ 		this.count = config.outlet_count;
 		for (var i = 0; i < this.count; i++) {
 			var service = new Service.Outlet(`Outlet ${i}`, i);
 			this.services.push(service);
