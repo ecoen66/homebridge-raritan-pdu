@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project uses [Semantic Versioning](https://semver.org/).
 
+## 1.0.5 (2020-04-27)
+
+## [Version 1.0.5](https://github.com/ecoen66/homebridge-raritan-pdu/compare/v1.0.4...1.0.5)
+
+#### Changes
+
+- Bug fix for outlet count.
+
 ## 1.0.4 (2020-04-26)
 
 ## [Version 1.0.4](https://github.com/ecoen66/homebridge-raritan-pdu/compare/v1.0.3...1.0.4)
