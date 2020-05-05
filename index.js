@@ -23,6 +23,7 @@ class PDUAccessory {
  		this.serial = config.serial;
  		this.firmware = config.firmware;
  		this.count = config.outlet_count;
+ 		this.name = config.name;
 		for (var i = 0; i < this.count; i++) {
 			var service = new Service.Outlet(`Outlet ${i}`, i);
 			this.services.push(service);
@@ -31,6 +32,11 @@ class PDUAccessory {
 				.on('get', this.getOn.bind(this, i))
 				.on('set', this.setOn.bind(this, i));
 		}
+
+    	var service = new Service.LightSensor(this.name);
+        service.getCharacteristic(Characteristic.CurrentAmbientLightLevel)
+	      .on('get', this.getWatts.bind(this))
+		this.services.push(service);
 
 		this.snmp = snmp.createSession(config.ip, config.snmp_community);
 		this.snmp_get = promisify(this.snmp.get.bind(this.snmp));
@@ -68,7 +74,7 @@ class PDUAccessory {
 	}
 
 	getServices() {
-	
+
 		// Create Accessory Informaton Service
 		var informationService = new Service.AccessoryInformation();
 		if (this.manufacturer) informationService.setCharacteristic(Characteristic.Manufacturer, this.manufacturer);
@@ -77,7 +83,7 @@ class PDUAccessory {
 		if (this.firmware) informationService.setCharacteristic(Characteristic.FirmwareRevision, this.firmware);
 
 		this.services.push(informationService);
-		
+
 		return this.services;
 	}
 
@@ -98,7 +104,7 @@ class PDUAccessory {
 	}
 
 	setOn(index, on, callback) {
-		this.log.info(`Switching socket ${index} to ${on}.`);    
+		this.log.info(`Switching socket ${index} to ${on}.`);
 		var switch_oid = `1.3.6.1.4.1.13742.4.1.2.2.1.3.${index + 1}`;
 		var toggle = on ? 1 : 0;
 		var snmp_parms = [
@@ -116,6 +122,21 @@ class PDUAccessory {
 			.catch(error => {
 				this.log.error(`Error switching socket ${index} to ${on}.`);
 				callback(error);
+			});
+	}
+
+    async getWatts (callback) {
+	    var switch_oids = [];
+	    switch_oids.push(`1.3.6.1.4.1.13742.4.1.3.1.3.0`);
+		this.snmp_get(switch_oids)
+			.then(varbinds => {
+				var watts = varbinds[0].value;
+				this.log.info(`Calling getWatts`, watts);
+				callback(null, watts);
+			})
+			.catch(error => {
+				this.log.info(`Error retrieving socket ${index} status.`);
+				callback(error, null);
 			});
 	}
 

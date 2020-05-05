@@ -1,6 +1,6 @@
 # homebridge-raritan-pdu
 A [Raritan](https://www.raritan.com) PX-5475 PDU plugin for
-[Homebridge](https://github.com/nfarina/homebridge).
+[Homebridge](https://github.com/nfarina/homebridge).  This creates a single PDU accessory with multiple outlet services and a light meter service to report on current utilization in Watts.
 
 This code is heavily based on the work of invliD's [homebridge-digipower-pdu](https://github.com/invliD/homebridge-digipower-pdu) accessory.
 
